@@ -2,11 +2,10 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import Bookcard from "./Bookcard"
 
-export default function Booksearch({content, setQuery, setBookid}){
+export default function Booksearch({content, setQuery}){
     const [searchQuery, setSearchQuery] = useState("")
     const handleSearch = (e) =>{
         setSearchQuery(e.target.value)
-        console.log(e.target.value)
         if(e.target.value.length>3){
             handleSubmit(e)
         }
@@ -19,11 +18,10 @@ export default function Booksearch({content, setQuery, setBookid}){
         <>
             <h2>Search for Book</h2>
             <form>
-                <label htmlFor="search">Book:</label>
+                <label htmlFor="search">Book: </label>
                 <input type="text" id="search" placeholder="James Bond..." onChange={handleSearch}></input>
             </form>
-            <ul className="booklist">
-                <section>
+            <section>
                     {content?.map(
                         book =>
                         <Bookcard key={book.key} 
@@ -33,8 +31,7 @@ export default function Booksearch({content, setQuery, setBookid}){
                                 rating={book.ratings_average} 
                                 isbn={book.isbn}
                         />)}
-                </section>
-            </ul>
+            </section>
         </>
     )
 }

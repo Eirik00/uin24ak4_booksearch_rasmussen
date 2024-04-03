@@ -12,7 +12,6 @@ function App() {
   const [content, setContent] = useState()
   const [jamesContent, setJamesContent] = useState()
   const [query, setQuery] = useState("")
-  const [bookid, setBookid] = useState(null)
 
   const getData = async()=>{
     try{
@@ -35,7 +34,7 @@ function App() {
   useEffect(()=>{
     getJamesData()
   },[])
-  
+
   useEffect(()=>{
     getData()
   },[query])
@@ -45,7 +44,7 @@ function App() {
       <Routes>
         <Route index element={<Home content={jamesContent}/>}/>
         <Route path="search/*" element={<Books />}>
-          <Route index element={<Booksearch content={content} setQuery={setQuery} setBookid={setBookid}/>}/>
+          <Route index element={<Booksearch content={content} setQuery={setQuery}/>}/>
         </Route>
       </Routes>
     </Layout>
