@@ -1,4 +1,6 @@
-export default function Bookcard(key, title, year, authors, rating, isbn){
+import { Link } from "react-router-dom";
+
+export default function Bookcard({ title, year, authors, rating, isbn}){
     return(
         <article>
             <h2>{title}</h2>
@@ -6,7 +8,7 @@ export default function Bookcard(key, title, year, authors, rating, isbn){
             <h3>Authors: </h3>
             <ul>
                 {authors?.map(author => 
-                <li key={author+key}>
+                <li key={author}>
                     <p>{author}</p>
                 </li>)}
             </ul>
